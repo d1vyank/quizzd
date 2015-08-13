@@ -3,6 +3,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var crypto = require('crypto');
+var ObjectId = mongoose.Schema.Types.ObjectId;
 
 var UserSchema = new Schema({
   name: String,
@@ -13,7 +14,8 @@ var UserSchema = new Schema({
   },
   hashedPassword: String,
   provider: String,
-  salt: String
+  salt: String,
+  polls: [ObjectId]
 });
 
 /**

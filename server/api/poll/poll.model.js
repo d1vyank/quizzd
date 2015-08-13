@@ -1,7 +1,8 @@
 'use strict';
 
 var mongoose = require('mongoose'),
-    Schema = mongoose.Schema;
+    Schema = mongoose.Schema,
+    ObjectId = mongoose.Schema.Types.ObjectId;
 
 var OptionSchema = new Schema({
   option: String,
@@ -10,9 +11,9 @@ var OptionSchema = new Schema({
 
 var PollSchema = new Schema({
   topic: String,
-  createdBy: String,
-  votedBy: [String],
-  options: [OptionSchema];
+  createdBy: ObjectId,
+  votedBy: [ObjectId],
+  options: [OptionSchema]
 });
 
 module.exports = mongoose.model('Poll', PollSchema);
