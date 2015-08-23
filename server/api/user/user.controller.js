@@ -4,6 +4,8 @@ var User = require('./user.model');
 var passport = require('passport');
 var config = require('../../config/environment');
 var jwt = require('jsonwebtoken');
+var _ = require('lodash');
+
 
 var validationError = function(res, err) {
   return res.status(422).json(err);
@@ -98,4 +100,17 @@ exports.me = function(req, res, next) {
  */
 exports.authCallback = function(req, res, next) {
   res.redirect('/');
+};
+
+exports.update = function(req, res) {
+  if(req.body._id) { delete req.body._id; }
+  User.findById(req.params.id, function (err, user) {
+    if (err) { return handleError(res, err); }
+    if(!user) { return res.status(404).send('Not Found'); }
+    user.polls = req.body.polls;
+    user.save(function (err) {
+      if (err) { return handleError(res, err); }
+      return res.status(200).send('No Content');
+    });
+  });
 };
