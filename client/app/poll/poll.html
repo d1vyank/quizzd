@@ -1,0 +1,35 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<!--Poll template from prepbootstrap.com -->
+<div class="container" ng-hide='hasVoted()'>
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <div class="panel panel-default">
+          <form>
+            <div class="panel-heading">
+                <h3 class="panel-title"><span class="fa fa-line-chart"></span>{{poll.topic}}</h3>
+            </div>
+              <div class="panel-body">
+                <ul class="list-group">
+                      <li class="list-group-item" ng-repeat="option in poll.options track by $index">
+                          <div class="radio">
+                              <label>
+                                  <input type="radio" value="{{$index}}" ng-model='vote.selectedOption'> {{option.option}}
+                              </label>
+                          </div>
+                      </li>
+                </ul>
+              </div>
+            <div class="panel-footer text-center">
+                <button type="button" class="btn btn-default btn-block btn-sm" ng-click="submitVote(vote.selectedOption)">
+                    Vote</button>
+            </div>
+          </form>
+        </div>
+    </div>
+</div>
+<div class='graph' ng-if="hasVoted()">
+  {{poll.topic}}
+  <canvas id="doughnut" class="chart chart-doughnut" legend="true" data="chartData"
+    labels="chartLabels"></canvas>
+</div>
