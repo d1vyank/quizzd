@@ -12,7 +12,6 @@ var OptionSchema = new Schema({
 var PollSchema = new Schema({
   topic: String,
   createdBy: ObjectId,
-  votedBy: [ObjectId],
   options: [OptionSchema]
 });
 
