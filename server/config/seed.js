@@ -51,9 +51,15 @@ User.find({}).remove(function() {
 
 Poll.find({}).remove(function(){
   Poll.create({
-    topic:'blah'
+    topic:'What is the air speed velocity of a coconut laden swallow?',
+    options: [{option:'Depends on the weight of the coconut', votes:50},
+    {option:'Depends on the size of the swallow', votes:123},
+    {option:'Both of the above', votes:345}]
   }, {
-    topic: 'meh'
+    topic:'What is your favorite frontend javascript framework?',
+    options: [{option:'AngularJS',votes:12530},
+    {option:'Ember.js',votes:143},
+    {option:'React', votes: 531}]
   }
 );
 });
