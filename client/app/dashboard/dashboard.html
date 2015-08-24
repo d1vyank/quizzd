@@ -29,11 +29,9 @@
                 <input ng-repeat="text in textFields track by $index" type="option" name="option" class="form-control" ng-model='newPoll.options[$index]' required>
               </div>
               <button ng-click="textFields.push('')" class="btn btn-inverse" type="button">Add Option</button>
-              <div class='poll-submit'>
-              <button class="btn btn-lg" type="submit">
+              <button class="btn btn-lg poll-submit" type="submit">
                 Create Poll
               </button>
-            </div>
             </div>
           </form>
         </div>
