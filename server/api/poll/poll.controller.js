@@ -38,7 +38,8 @@ exports.update = function(req, res) {
   if(req.body._id) { delete req.body._id; }
   var cookie = req.cookies.votedOn;
   if(cookie == undefined) {
-    res.cookie('votedOn', [req.params.id]);
+    //maxAge is one year
+    res.cookie('votedOn', [req.params.id], {maxAge: 365 * 24 * 60 * 60 * 1000});
   }
   else if(cookie.indexOf(req.params.id) !== -1) {
     return res.status(403);
