@@ -11,6 +11,9 @@ var validationError = function(res, err) {
   return res.status(422).json(err);
 };
 
+var handleError = function(res, err) {
+  return res.status(404).json(err);
+};
 /**
  * Get list of users
  * restriction: 'admin'

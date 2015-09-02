@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('quizzdApp')
-  .controller('DashboardCtrl', function ($scope, $http, $location,Auth, User) {
+  .controller('DashboardCtrl', function ($scope, $http, $location,Auth) {
     var user = Auth.getCurrentUser();
     $scope.polls = [];
     $scope.newPoll = {topic: '', options: []};
@@ -19,8 +19,9 @@ angular.module('quizzdApp')
 
     $scope.createPoll = function(form) {
       $scope.submitted = true;
-      if(!form.$valid)
+      if(!form.$valid) {
         return;
+      }
       $scope.newPoll.createdBy = user._id;
       $scope.newPoll.votedBy = [];
       $scope.newPoll.options = $scope.newPoll.options.map(function(value){

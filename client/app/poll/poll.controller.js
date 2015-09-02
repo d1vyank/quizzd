@@ -15,22 +15,24 @@ angular.module('quizzdApp')
         $scope.chartLabels.push(option.option);
         $scope.chartData.push(option.votes);
       });
-    }, function(err) {
+    }, function() {
       $('.container').text('Poll not found.');
     });
 
     $scope.submitVote = function(option) {
-      if(!option)
+      if(!option) {
         return;
+      }
       $scope.poll.options[option].votes++;
       $scope.chartData[option]++;
       $http.put('/api/polls/'+pollId, $scope.poll);
-    }
+    };
 
     $scope.hasVoted = function() {
       var cookie = $cookies.get('votedOn');
-      if(cookie === undefined)
+      if(cookie === undefined) {
         return false;
+      }
       else {
         return cookie.indexOf(pollId) !== -1;
       }
