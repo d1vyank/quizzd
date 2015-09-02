@@ -27,9 +27,8 @@ var all = {
   // Should we populate the DB with sample data?
   seedDB: true,
 
-  // Secret for session, you will want to change this and make it an environment variable
   secrets: {
-    session: 'quizzd-secret'
+    session: process.env.SESH_SECRET
   },
 
   // List of user roles
