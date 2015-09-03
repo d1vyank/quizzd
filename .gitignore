@@ -8,3 +8,4 @@ dist
 /server/config/seed.js
 npm-debug.log
 data
+.yo-rc.json
